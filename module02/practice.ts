@@ -277,32 +277,110 @@
 //     Simulates fetching user data (containing name and age).
 // Returns the data after a short delay.
 
-interface User {
+// interface User {
+//   name: string;
+//   age: number;
+// }
+
+// async function fetchUserData(): Promise<User> {
+//   console.log("Fetching user data...");
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       const userData: User = {
+//         name: "Adnan",
+//         age: 22,
+//       };
+//       console.log("User data fetched");
+//       resolve(userData);
+//     }, 2000);
+//   });
+// }
+
+// async function getUserInfo() {
+//   try {
+//     const user = await fetchUserData();
+//     console.log(`User Name: ${user.name}, User age: ${user.age}`);
+//   } catch (error) {
+//     console.error("Failed to fetch user data", error);
+//   }
+// }
+
+// getUserInfo();
+
+// interface UserData {
+//   name: string;
+//   age: number;
+// }
+
+// const fetchUserInfo = (): Promise<UserData> => {
+//   console.log("Fetching use info ...");
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const userData = {
+//         name: "Adnan",
+//         age: 22,
+//       };
+//       console.log("User data fetched");
+//       resolve(userData);
+//     }, 1000);
+//   });
+// };
+
+// const getUserData = async (): Promise<void> => {
+//   try {
+//     const user = await fetchUserInfo();
+//     console.log(user);
+//   } catch (error) {
+//     if (error instanceof Error) {
+//       console.error(error.message);
+//     } else {
+//       console.error("Unknown error", error);
+//     }
+//   }
+// };
+
+// getUserData();
+
+// Task 15: Type Guards
+// Objective: Create custom type guards for more accurate type checking.
+
+// Instructions:
+
+// Write a function isString(value: unknown): value is string that checks if a value is a string.
+// Use this in another function printUpperCase(value: unknown): void that prints the value in uppercase if it’s a string.
+
+// function isString(value: unknown): value is string {
+//   return typeof value === "string";
+// }
+//
+// function printUpperCase(value: unknown): void {
+//   if (isString(value)) {
+//     console.log(value.toUpperCase());
+//   } else {
+//     console.log("given value is not string");
+//   }
+// }
+// printUpperCase("adnan");
+// console.log(isString(45));
+
+// Task 16: Utility Types and Keyof Constraints
+// Objective: Access object properties dynamically using keyof.
+//
+// Instructions:
+//
+//     Create a function that:
+//     Takes an object and a key.
+//     Returns the property value from the object based on the provided key.
+//     Use keyof to constrain the key to valid properties of the object.
+
+interface Person {
   name: string;
   age: number;
+  email?: string;
 }
 
-async function fetchUserData(): Promise<User> {
-  console.log("Fetching user data...");
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const userData: User = {
-        name: "Adnan",
-        age: 22,
-      };
-      console.log("User data fetched");
-      resolve(userData);
-    }, 2000);
-  });
+function lastTask<T extends Person, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key];
 }
 
-async function getUserInfo() {
-  try {
-    const user = await fetchUserData();
-    console.log(`User Name: ${user.name}, User age: ${user.age}`);
-  } catch (error) {
-    console.error("Failed to fetch user data", error);
-  }
-}
-
-getUserInfo();
+console.log(lastTask({ name: "Adnan", age: 21 }, "age"));
