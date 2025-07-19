@@ -36,47 +36,47 @@
 //   });
 // });
 
-// function enroll(payment) {
-//   console.log("Course enrollment is in progress");
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       if (payment) {
-//         resolve();
-//       } else {
-//         reject("Payment failed");
-//       }
-//     }, 1000);
-//   });
-// }
+function enroll(payment) {
+  console.log("Course enrollment is in progress");
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (payment) {
+        resolve();
+      } else {
+        reject("Payment failed");
+      }
+    }, 1000);
+  });
+}
 
-// function progress(marks) {
-//   console.log("Course in progress");
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       if (marks >= 80) {
-//         resolve();
-//       } else {
-//         reject("You didn't get enough marks to get a certificate.");
-//       }
-//     }, 1000);
-//   });
-// }
+function progress(marks) {
+  console.log("Course in progress");
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (marks >= 80) {
+        resolve();
+      } else {
+        reject("You didn't get enough marks to get a certificate.");
+      }
+    }, 1000);
+  });
+}
 
-// function getCertificate(name) {
-//   console.log("Preparing your certificate...");
-//   return new Promise(function (resolve) {
-//     setTimeout(() => {
-//       console.log(`Congrats ${name}! You got the certificate`);
-//       resolve();
-//     }, 1000);
-//   });
-// }
+function getCertificate(name) {
+  console.log("Preparing your certificate...");
+  return new Promise(function (resolve) {
+    setTimeout(() => {
+      console.log(`Congrats ${name}! You got the certificate`);
+      resolve();
+    }, 1000);
+  });
+}
 
-// // Using .then() and .catch()
-// enroll(true)
-//   .then(() => progress(85))
-//   .then(() => getCertificate("Adnan"))
-//   .catch((err) => console.log("❌", err));
+// Using .then() and .catch()
+enroll(true)
+  .then(() => progress(85))
+  .then(() => getCertificate("Adnan"))
+  .catch((err) => console.log(err));
 
 // 🔹 Problem: 01
 // Create a function delayLog(message, delay) that logs a message after a given delay using Promises.
