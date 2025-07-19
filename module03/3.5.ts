@@ -1,18 +1,33 @@
-//oop - class
-class Animal {
-  name: string;
-  species: string;
-  sound: string;
-  constructor(name: string, species: string, sound: string) {
-    this.name = name;
-    this.species = species;
-    this.sound = sound;
-  }
+// access modifier
+class BankAccount {
+    readonly id:number;
+    name:string;
+    protected balance: number;
 
-  makeSound(){
-    console.log(`The ${this.name} says ${this.sound}`);
-  }
+    constructor(id:number, name:string,  balance:number) {
+        this.id = id;
+        this.name = name;
+        this.balance = balance;
+    }
+
+    addDeposit(amount:number) {
+        this.balance += amount;
+    }
+
+    getBalance() {
+        return this.balance;
+    }
 
 }
 
-const dog = new Animal("Dog", "mammal", "gheu");
+const goribManusherAccount = new BankAccount(111, "Mr. gorib", 20);
+goribManusherAccount.addDeposit(20);
+console.log(goribManusherAccount);
+console.log(goribManusherAccount.getBalance());
+
+
+class studentAccount extends BankAccount {
+    test(){
+        this.balance
+    }
+}
